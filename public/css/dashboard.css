@@ -1,0 +1,22 @@
+/* Jessy Ledama */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    width: calc(50% - 10px); /* Adjust width and margins as needed */
+    margin: 10px 5px; /* Adjust margins as needed */
+}
+
+.card-body{
+    
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    align-content: center;
+    padding: 40px 1.5rem 40px 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
