@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Domain;
+use App\Models\SiteAvailable;
 use Illuminate\Http\Request;
 
-class DomainController extends Controller
+class SiteAvailableController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $domains = Domain::all();
-
-        return view('dashboard', compact('domains'));
+        //
     }
 
     /**
@@ -36,17 +34,15 @@ class DomainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Domain $domain, $id)
+    public function show(SiteAvailable $siteAvailable)
     {
-        $domain = Domain::find($id);
-
-        return view('domains.show', compact('domain'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Domain $domain)
+    public function edit(SiteAvailable $siteAvailable)
     {
         //
     }
@@ -54,7 +50,7 @@ class DomainController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Domain $domain)
+    public function update(Request $request, SiteAvailable $siteAvailable)
     {
         //
     }
@@ -62,7 +58,7 @@ class DomainController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Domain $domain)
+    public function destroy(SiteAvailable $siteAvailable)
     {
         //
     }

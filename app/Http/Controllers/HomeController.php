@@ -11,7 +11,8 @@ class HomeController extends Controller
     public function index()
     {
         $domains = Domain::all();
+        $count = count($domains);
 
-        return view('dashboard', compact('domains'));
+        return view('dashboard', compact('domains', 'count'));
     }
 }
