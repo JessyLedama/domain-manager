@@ -36,9 +36,9 @@ class DomainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Domain $domain, $id)
+    public function show(Domain $domain)
     {
-        $domain = Domain::find($id);
+        $domain = Domain::find($domain);
 
         return view('domains.show', compact('domain'));
     }

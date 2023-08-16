@@ -1,19 +1,37 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }} {{ $count }}
-        </h2>
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex justify-between items-center">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                            Domains
+                        </h2>
+                    </div>
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                            New
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </x-slot>
 
     @if(!empty($domains))
         @foreach($domains as $domain)
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex justify-between items-center">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
-                            <a href="{{ route('domains.show', $domain) }}">
+                            <span>
                                 {{ $domain->name }}
-                            </a>
+                            </span>
+                        </div>
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            <span>
+                                {{ $domain->url }}
+                            </span>
                         </div>
                     </div>
                 </div>

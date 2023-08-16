@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('site_availables', function (Blueprint $table) {
             $table->id();
+            $table->string('path');
+            $table->string('domainId');
+            $table->string('serverName');
+            $table->string('serverAlias');
+            $table->string('proxyPass');
+            $table->string('proxyPassReverse');
+            $table->string('rewriteCond1');
+            $table->string('rewriteCond2');
             $table->timestamps();
         });
     }
