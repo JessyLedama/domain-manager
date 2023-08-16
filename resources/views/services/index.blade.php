@@ -1,5 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+@section('content')
+<section class="main">
+    <div name="header">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-6">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex justify-between items-center">
@@ -16,7 +19,9 @@
                 </div>
             </div>
         </div>
-    </x-slot>
+    </div>
+
+    @extends('layouts.sidebar')
 
     @if(count($services) > 0)
         @foreach($services as $service)
@@ -50,4 +55,5 @@
             </div>
         </div>
     @endif
-</x-app-layout>
+</section>
+@endsection
