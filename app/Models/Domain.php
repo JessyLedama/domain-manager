@@ -17,11 +17,20 @@ class Domain extends Model
     protected $fillable = [
         'name',
         'url',
+        'type',
+        'version',
     ];
 
+    // a somain has many site, http and https
     public function siteAvailable(): hasOne
     {
-        return $this->hasOne(SiteAvailable::class);
+        return $this->hasMany(SiteAvailable::class);
+    }
+
+    // a domain has one service
+    public function siteService(): hasOne
+    {
+        return $this->hasOne(SiteService::class);
     }
 
 }
