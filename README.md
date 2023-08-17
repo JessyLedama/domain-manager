@@ -2,20 +2,20 @@
 
 This domain manager is a solution for people who manage multiple domains in a linux environment. After installation, this system will help to automate some of your tasks as follows:
 
-- Suppose you just built your project and deployed it. Your project is now ready for launch, but it is currently running on ```192.168.123.456:8000``` but you want it accessible through ```example.com```. Lucky for you, you already have this domain manager up and running. 
+- Suppose you just built your project and deployed it. Your project is now ready for launch, but it is currently running on ```192.168.123.456:8000``` but you want it accessible through ```example.com```. Lucky for you, you have this domain manager up and running. 
 
-- You log into the system and create a domain called example.com and its proxy you set as 192.168.123.456:8000. Having done that, you open a new tab and go to example.com, and voila! Your project is ready for launch!
+- You log into the system and create a domain called ```example.com``` and its proxy you set as ```192.168.123.456:8000```. Having done that, you open a new tab and go to example.com, and voila! Your project is ready for launch!
 
 - When you create a domain in the system, a reverse proxy and a service file will be created automatically for the domain. Therefore, if your project is running on ```192.168.123.456:8000``` and you have created its domain as ```example.com```, you will now be able to access the it through example.com
 
 ## How To Install
 This project was built using Laravel 10. Therefore, you need to have composer in your environment. If you do not have composer installed read here for more information about [composer](https://getcomposer.org/doc/00-intro.md).
 
-You may clone this project on github directly or using composer 
+You may clone this project on github directly or using composer
 ```composer create-project jessyledama/domain-manager```
 
 Once the installation process is complete, you may cd into your project
-``` cd domain-manager```
+```cd domain-manager```
 
 Migrate your database
 ``` php artisan migrate ```
