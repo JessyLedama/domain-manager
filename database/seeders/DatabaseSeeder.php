@@ -26,5 +26,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Example',
         //     'url' => 'example.com',
         // ]);
+
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }

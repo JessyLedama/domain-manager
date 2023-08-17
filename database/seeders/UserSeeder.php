@@ -20,13 +20,22 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('password'),
             ],
+
+            [
+                'name' => 'Test User',
+                'email' => 'test@gmail.com',
+                'password' => Hash::make('password'),
+            ],
         ];
 
         $users = User::all();
         
         if(count($users) < 1)
         {
-
+            foreach($usersData as $user)
+            {
+                User::create($user);
+            }
         }
     }
 }
