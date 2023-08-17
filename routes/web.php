@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\SiteAvailableController;
 use App\Http\Controllers\SiteServiceController;
+use App\Http\Controllers\ServiceFilePathController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,20 @@ Route::prefix('services')->middleware('auth')->group(function(){
 
     // show selected
     Route::get('{id}', [SiteServiceController::class, 'show'])->name('services.show');
+});
+
+// Manage Service Paths
+Route::prefix('services-paths')->middleware('auth')->group(function(){
+    // list all
+    Route::get('index', [ServiceFilePathController::class, 'index'])->name('servicePaths.index');
+    // create new 
+    Route::get('create', [ServiceFilePathController::class, 'create'])->name('servicePaths.create');
+
+    // store new
+    Route::post('create', [ServiceFilePathController::class, 'store'])->name('servicePaths.store');
+
+    // show selected
+    Route::get('{id}', [ServiceFilePathController::class, 'show'])->name('servicePaths.show');
 });
 
 require __DIR__.'/auth.php';
