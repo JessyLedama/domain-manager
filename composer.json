@@ -1,5 +1,5 @@
 {
-    "name": "JessyLedama/domain-manager",
+    "name": "jessyledama/domain-manager",
     "type": "project",
     "description": "An app for managing domains in Ubuntu Server.",
     "keywords": ["domain manager", "domain"],
