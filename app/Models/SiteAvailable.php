@@ -30,4 +30,9 @@ class SiteAvailable extends Model
         return $this->belongsTo(Domain::class);
     }
 
+    public function path(): hasOne
+    {
+        return $this->hasOne(SiteFilePath::class);
+    }
+
 }

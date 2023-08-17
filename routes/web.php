@@ -56,6 +56,15 @@ Route::prefix('sites')->middleware('auth')->group(function(){
 
     // show selected
     Route::get('{id}', [SiteAvailableController::class, 'show'])->name('sites.show');
+
+    // create site path
+    Route::get('/site-path/create', [SiteAvailableController::class, 'createFilePath'])->name('sitePath.create');
+
+    // store site path
+    Route::post('/site-path/create', [SiteAvailableController::class, 'sitePath'])->name('sitePath.store');
+
+    // list site path
+    Route::get('/site-path/index', [SiteAvailableController::class, 'listFilePath'])->name('sitePath.index');
 });
 
 // Manage Services Available

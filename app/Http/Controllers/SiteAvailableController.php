@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\SiteAvailable;
 use Illuminate\Http\Request;
 use App\Models\Domain;
+use App\Http\Services\SiteAvailableService;
+use App\Http\Services\SiteFilePathService;
+use App\Models\SiteFilePath;
 
 class SiteAvailableController extends Controller
 {
@@ -93,10 +96,10 @@ class SiteAvailableController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, SiteAvailableService $siteAvailableService)
     {
         // save site data to db
-        $siteData = SiteAvailable::create([
+        $siteData = [
             'path' => $request->path,
             'domainId' => $request->domainId,
             'serverName' => $request->serverName,
@@ -105,7 +108,9 @@ class SiteAvailableController extends Controller
             'proxyPassReverse' => $request->proxyPassReverse,
             'rewriteCond1' => $request->rewriteCond1,
             'rewriteCond2' => $request->rewriteCond2,
-        ]);
+        ];
+
+        $siteAvailableService->store($siteData);
 
         // create domain.conf file
         $file = '/home/jayliste/Documents/sites'.$request->serverName.'.conf';
@@ -164,5 +169,34 @@ class SiteAvailableController extends Controller
     public function destroy(SiteAvailable $siteAvailable)
     {
         //
+    }
+
+    /**
+     *  Create File Path for Sites
+     */
+    public function sitePath(Request $request, SiteFilePathService $siteFilePathService)
+    {
+        $sitePath = [
+            'path' => $request->path,
+            'siteId' => $request->siteId,
+        ];
+
+        $siteFilePathService->store($sitePath);
+
+        return redirect()->route('sitePath.index');
+    }
+
+    public function listFilePath()
+    {
+        $sitePaths = SiteFilePath::with('siteAvailable')->get();
+
+        return view('sites.filePath.index', compact('sitePaths'));
+    }
+
+    public function createFilePath()
+    {
+        $sites = SiteAvailable::All();
+
+        return view('sites.filePath.create', compact('sites'));
     }
 }

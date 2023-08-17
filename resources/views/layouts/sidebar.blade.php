@@ -5,5 +5,6 @@
     <a href="{{ route('dashboard') }}">Dashboard</a>
     <a href="{{ route('domains.index') }}">Domains</a>
     <a href="{{ route('sites.index') }}">Sites</a>
+    <a href="{{ route('sitePath.index') }}">Site Path</a>
     <a href="{{ route('services.index') }}">Services</a>
 </div>
