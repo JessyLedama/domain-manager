@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Domain;
 use Illuminate\Http\Request;
 use App\Http\Services\DomainService;
+use App\Http\Services\SiteAvailableService;
+use App\Models\SiteFilePath;
+use App\Models\ServiceFilePath;
 
 class DomainController extends Controller
 {
@@ -27,10 +30,17 @@ class DomainController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created domain in storage. 
+     * After storing the domain, store a siteAvailable record for the domain.
      */
-    public function store(Request $request, DomainService $domainService)
+    public function store(Request $request, DomainService $domainService, SiteAvailableService $siteAvailableService)
     {
+        // get file paths
+        $sitePath = SiteFilePath::first();
+        $servicePath = ServiceFilePath::first();
+
+
+        // prepare $domainData for storage
         $domainData = [
             'name' => $request->name,
             'url' => $request->url,
@@ -38,7 +48,25 @@ class DomainController extends Controller
             'version' => $request->version,
         ];
 
+        // store the domain using $domainService
         $domainService->store($domainData);
+
+        $domain = Domain::where('name', $request->name)->first();
+
+        // prepare serviceAvailableData for storage
+        $siteData = [
+            'path' => $sitePath,
+            'domainId' => $domain->id,
+            'serverName' => $request->name,
+            'serverAlias' => 'www.'.$request->name,
+            'proxyPass' => $request->url,
+            'proxyPassReverse' => $request->url,
+            'rewriteCond1' => 'www.'.$request->name,
+            'rewriteCond2' => $request->name,
+        ];
+        
+        // store the site
+        $siteAvailableService->store($siteData);
 
         return redirect()->route('domains.index');
     }
