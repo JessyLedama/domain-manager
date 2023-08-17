@@ -1,9 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "JessyLedama/domain-manager",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "An app for managing domains in Ubuntu Server.",
+    "keywords": ["domain manager", "domain"],
     "license": "MIT",
+    "author": [{
+        "name": "Jessy Ledama",
+        "email": "sirjayliste@gmail.com"
+    }],
     "require": {
         "php": "^8.1",
         "barryvdh/laravel-debugbar": "^3.8",
