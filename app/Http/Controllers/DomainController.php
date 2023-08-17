@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use Illuminate\Http\Request;
+use App\Http\Services\DomainService;
 
 class DomainController extends Controller
 {
@@ -14,7 +15,7 @@ class DomainController extends Controller
     {
         $domains = Domain::all();
 
-        return view('dashboard', compact('domains'));
+        return view('domains.index', compact('domains'));
     }
 
     /**
@@ -22,15 +23,24 @@ class DomainController extends Controller
      */
     public function create()
     {
-        //
+        return view('domains.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, DomainService $domainService)
     {
-        //
+        $domainData = [
+            'name' => $request->name,
+            'url' => $request->url,
+            'type' => $request->type,
+            'version' => $request->version,
+        ];
+
+        $domainService->store($domainData);
+
+        return redirect()->route('domains.index');
     }
 
     /**
