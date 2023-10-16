@@ -56,9 +56,10 @@ class SiteServiceController extends Controller
                 ];
                 
                 // create file
-                chown($fileName, Auth::id());
-
                 $file = fopen($fileName, 'wb');
+
+                // make current user the owner of the file
+                chown($fileName, Auth::id());
 
                 // if creating fails
                 if(!$file)
