@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\SiteService;
 use Illuminate\Http\Request;
 use App\Models\SiteAvailable;
+use App\Http\Services\ServiceFilePathService;
+use Auth;
 
 class SiteServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ServiceFilePathService $serviceFilePathService)
     {
         // services path
-        $servicesPath = '/home/jayliste/Documents/services';
+        $servicesPath = '/etc/systemd/system';
 
         // scan directory for content
         $services = scandir($servicesPath);
@@ -29,7 +31,7 @@ class SiteServiceController extends Controller
             $siteDir = $site->serverName;
 
             // file path
-            $filePath = '/home/jayliste/Documents/services/';
+            $filePath = $servicesPath;
 
             // path of file domain.conf file
             $fileName = $filePath.$siteDir.'.service';
@@ -54,6 +56,8 @@ class SiteServiceController extends Controller
                 ];
                 
                 // create file
+                chown($fileName, Auth::id());
+
                 $file = fopen($fileName, 'wb');
 
                 // if creating fails

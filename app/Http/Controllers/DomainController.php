@@ -37,7 +37,20 @@ class DomainController extends Controller
     {
         // get file paths
         $sitePath = SiteFilePath::first();
+
+        // if file path is not set, use default.
+        if(!$sitePath)
+        {
+            $sitePath = '/etc/apache2/sites-available';
+        }
+
         $servicePath = ServiceFilePath::first();
+
+        // if file path is not set, use default.
+        if(!$servicePath)
+        {
+            $servicePath = '/etc/systemd/system';
+        }
 
 
         // prepare $domainData for storage

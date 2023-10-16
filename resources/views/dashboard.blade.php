@@ -130,7 +130,7 @@
                         <div class="p-6 text-gray-900 dark:text-gray-100">
                             No Services yet <br />
 
-                            <a class="btn btn-primary" href="{{ route('domains.create') }}"> Add New Domains </a>
+                            <a class="btn btn-primary" href="{{ route('services.create') }}"> Add New Domains </a>
                         </div>
                     </div>
                 </div>
